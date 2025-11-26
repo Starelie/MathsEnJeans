@@ -15,7 +15,7 @@ def find_N_Primes(N: int):
         number += 1
     return primes
 
-def print_Line(line, spaces, offset):
+def _print_Line(line, spaces, offset):
     print(" " * (spaces // 2) * offset , end="")
     for i in line:
         print(f"{i :<{spaces}}", end="")
@@ -25,13 +25,13 @@ def print_Triangle(ligneDepart):
     ligneA = ligneDepart
     spaces = len(str(max(ligneA))) + 1
     offset = 0
-    print_Line(ligneA, spaces, offset)
+    _print_Line(ligneA, spaces, offset)
     while (len(ligneA) > 1):
         offset += 1
         ligneB = []
         for i in range(len(ligneA) - 1):
             ligneB.append(abs(ligneA[i] - ligneA[i+1]))
-        print_Line(ligneB, spaces, offset)
+        _print_Line(ligneB, spaces, offset)
         ligneA = ligneB
 
 def first_Of_Lines_Is_1(ligneDepart):
@@ -46,8 +46,10 @@ def first_Of_Lines_Is_1(ligneDepart):
     return True
 
 def test_Remove_Values(ligneDepart):
+    remove_Not_1 = []
     for valeur in ligneDepart:
-        ligne = ligneDepart
+        ligne = ligneDepart.copy()
         ligne.remove(valeur)
         if not(first_Of_Lines_Is_1(ligne)):
-            print(valeur)
+            remove_Not_1.append(valeur)
+    return remove_Not_1
