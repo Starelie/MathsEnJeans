@@ -15,6 +15,13 @@ def find_N_Primes(N: int):
         number += 1
     return primes
 
+def find_N_Odds(N:int):
+    odds = [0] * N
+    for i in range(len(odds)):
+        odds[i] = i * 2 + 1
+    return odds
+    
+
 def _print_Line(line, spaces, offset):
     print(" " * (spaces // 2) * offset , end="")
     for i in line:
@@ -31,7 +38,7 @@ def print_Triangle(ligneDepart):
         ligneB = []
         for i in range(len(ligneA) - 1):
             ligneB.append(abs(ligneA[i] - ligneA[i+1]))
-        _print_Line(ligneB, spaces, offset)
+        _print_Line(ligneB, 2, offset)
         ligneA = ligneB
 
 def first_Of_Lines_Is_1(ligneDepart):
