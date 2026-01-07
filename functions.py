@@ -15,30 +15,62 @@ def find_N_Primes(N: int):
         number += 1
     return primes
 
-def find_N_Odds(N:int):
+def find_N_Odds(N: int):
     odds = [0] * N
     for i in range(len(odds)):
         odds[i] = i * 2 + 1
     return odds
-    
 
-def _print_Line(line, spaces, offset):
+def find_N_Squares(N: int):
+    squares = []
+    for i in range(N):
+        squares.append(i*i)
+    return squares
+
+def find_N_Powers_Of_X(N: int, X: int):
+    powers = []
+    for i in range(N):
+        powers.append(X**i)
+    return powers
+
+def find_N_Values_Fibonacci(N: int):
+    fibonacci = [1, 1]
+    for i in range(N):
+        fibonacci.append(fibonacci[i] + fibonacci[i + 1])
+    return fibonacci
+
+def _print_Line_Spaces(line, spaces, offset):
     print(" " * (spaces // 2) * offset , end="")
     for i in line:
         print(f"{i :<{spaces}}", end="")
     print("")
 
-def print_Triangle(ligneDepart):
-    ligneA = ligneDepart
+def _simple_Print_Line(line):
+    for i in line:
+        print(i, end=" ")
+    print("")
+
+def print_Triangle_Spaces(ligneDepart):
+    ligneA = ligneDepart.copy()
     spaces = len(str(max(ligneA))) + 1
     offset = 0
-    _print_Line(ligneA, spaces, offset)
-    while (len(ligneA) > 1):
+    _print_Line_Spaces(ligneA, spaces, offset)
+    for i in range(len(ligneA) - 1):
         offset += 1
         ligneB = []
         for i in range(len(ligneA) - 1):
             ligneB.append(abs(ligneA[i] - ligneA[i+1]))
-        _print_Line(ligneB, 2, offset)
+        _print_Line_Spaces(ligneB, spaces, offset)
+        ligneA = ligneB
+
+def simple_Print_Triangle(ligneDepart):
+    ligneA = ligneDepart.copy()
+    _simple_Print_Line(ligneA)
+    for i in range(len(ligneA) - 1):
+        ligneB = []
+        for i in range(len(ligneA) - 1):
+            ligneB.append(abs(ligneA[i] - ligneA[i+1]))
+        _simple_Print_Line(ligneB)
         ligneA = ligneB
 
 def first_Of_Lines_Is_1(ligneDepart):
