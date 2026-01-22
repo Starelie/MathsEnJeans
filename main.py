@@ -1,7 +1,9 @@
 import functions as f
 import matplotlib.pyplot as plot
+import comparators as c
 
-maxLineLength = 15
-ligneB = f.find_N_Powers_Of_X(maxLineLength, 2)
-f.print_Triangle_Spaces(ligneB)
-f.simple_Print_Triangle(ligneB)
+maxLineLength = 50
+ligne = f.find_N_Primes(maxLineLength)
+f.print_Triangle_Spaces(ligne)
+f.simple_Print_Triangle(ligne)
+f.print_Triangle_2_Categories(ligne, c.greater_or_equal, 2)

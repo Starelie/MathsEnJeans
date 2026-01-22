@@ -24,6 +24,9 @@ def find_N_Odds(N: int):
 def find_N_Squares(N: int):
     return [i * i for i in range(N)]
 
+def find_N_Cubes(N: int):
+    return [i * i * i for i in range(N)]
+
 def find_N_Powers_Of_X(N: int, X: int):
     return [X ** i for i in range(N)]
 
@@ -63,6 +66,19 @@ def _simple_Print_Line(line):
         print(i, end=" ")
     print("")
 
+def _print_Offset(offset):
+    for i in range(offset):
+        print(" ", end="")
+
+def _print_Line_2_Categories(line: list, condition, compared: int):
+    for i in line:
+        if condition(i, compared):
+            print("⬜", end="")
+        else:
+            print("⬛", end="")
+    print("")
+
+
 def print_Triangle_Spaces(ligneDepart):
     ligneA = ligneDepart.copy()
     spaces = len(str(max(ligneA))) + 1
@@ -84,6 +100,16 @@ def simple_Print_Triangle(ligneDepart):
         for j in range(len(ligneA) - 1):
             ligneB.append(abs(ligneA[j] - ligneA[j+1]))
         _simple_Print_Line(ligneB)
+        ligneA = ligneB
+
+def print_Triangle_2_Categories(ligneDepart, condition1, condition2):
+    ligneA = ligneDepart.copy()
+    for i in range(len(ligneA) - 1):
+        ligneB = []
+        for j in range(len(ligneA) - 1):
+            ligneB.append(abs(ligneA[j] - ligneA[j+1]))
+        _print_Offset(i)
+        _print_Line_2_Categories(ligneB, condition1, condition2)
         ligneA = ligneB
 
 def first_Of_Lines_Is_1(ligneDepart):
